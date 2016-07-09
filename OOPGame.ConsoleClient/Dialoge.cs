@@ -5,8 +5,21 @@
 
     public class Dialoge
     {
+        public static void printingLuiKang()
+        {
+            string s = "LIU KANG TEAM PROJECT";
+            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(s);
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Black;
+
+        }
         public static void MeetMonster(IMonster monster)
         {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("There is a {0} ahead.", monster.Name);
             Console.WriteLine("0. Fight");
             Console.WriteLine("1. Flee");
