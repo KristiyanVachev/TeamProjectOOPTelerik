@@ -7,37 +7,45 @@ using OOPGame.Core.Interfaces;
 
 namespace OOPGame.Core.Models
 {
-    public class Monster : Creature, IMonster
+    public abstract class Monster : Creature, IMonster
     {
         //constructor
-        public Monster(string name, int maxHP, int damage, int armor, int level,  string weakAttack, string strongAttack, string UltAttack) : base(name)
+        protected Monster(string name, int maxHp, int damage, int armor, int level, string weakAttackName, string strongAttackName, string ultimateAttackName) :
+            base(name, maxHp, damage, armor, level, weakAttackName, strongAttackName, ultimateAttackName)
         {
-            this.MaxHP = maxHP;
-            this.HP = maxHP;
-            this.Damage = damage;
-            this.Armor = armor;
-            this.Level = level;
-            this.AttackNames = new string[3];
-            this.AttackNames[0] = weakAttack;
-            this.AttackNames[1] = strongAttack;
-            this.AttackNames[2] = UltAttack;
+            this.Hp = maxHp;
         }
 
+        //public Monster(string name, int maxHp, int damage, int armor, int level,  string weakAttack, string strongAttack, string UltAttack)
+        //    : base()
+        //{
+        //}
+        //public Monster(string name, int maxHp, int damage, int armor, int level,  string weakAttack, string strongAttack, string UltAttack) : base(name)
+        //{
+        //    this.MaxHp = maxHp;
+        //    this.Hp = maxHp;
+        //    this.Damage = damage;
+        //    this.Armor = armor;
+        //    this.Level = level;
+        //    this.AttackNames = new string[3];
+        //    this.AttackNames[0] = weakAttack;
+        //    this.AttackNames[1] = strongAttack;
+        //    this.AttackNames[2] = UltAttack;
+        //}
+
         //methods
-        public int DamageOnFlee()
+        public virtual int DamageOnFlee()
         {
             Random rnd = new Random();
             //Inflict a random damage between the weakest and strongest attack.
             int damageDealth = rnd.Next(this.Damage / 2, this.Damage * 2);
-            return damageDealth;          
+            return damageDealth;
         }
 
         //maybe remove this.
-        public override string FinalWords()
+        public override void FinalWords()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Grr myr pur, vyh kak me slay-na!");
         }
-
-        
     }
 }

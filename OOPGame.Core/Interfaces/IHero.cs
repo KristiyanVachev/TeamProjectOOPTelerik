@@ -6,6 +6,8 @@
     {
         int Experience { get; set; }
 
+        int MaxHp { get; set; }
+
         int PotionsCount { get; set; }
 
         Shield Shield { get; set; }

@@ -43,19 +43,25 @@
     <Compile Include="Infrastructure\RandomChance.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
     <Compile Include="Interfaces\IHero.cs" />
+    <Compile Include="Interfaces\IInventory.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IMonster.cs" />
     <Compile Include="Interfaces\IPotion.cs" />
     <Compile Include="Interfaces\IShield.cs" />
     <Compile Include="Interfaces\ISword.cs" />
-    <Compile Include="Interfaces\IWeapon.cs" />
+    <Compile Include="Models\BossMonster.cs" />
     <Compile Include="Models\Creature.cs" />
     <Compile Include="Models\Hero.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Monster.cs" />
+    <Compile Include="Models\Potion.cs" />
+    <Compile Include="Models\PowerfulMonster.cs" />
     <Compile Include="Models\Shield.cs" />
     <Compile Include="Models\Sword.cs" />
+    <Compile Include="Models\WeakMonster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -18,11 +18,11 @@
                 //If any damage dealth
                 if (damageDealth != 0)
                 {
-                    deffender.HP -= damageDealth;
+                    deffender.Hp -= damageDealth;
                     //If defender is dead.
-                    if (deffender.HP > 0)
+                    if (deffender.Hp > 0)
                     {
-                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage. {deffender.Name} now has {deffender.HP}HP");
+                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage. {deffender.Name} now has {deffender.Hp}HP");
                     }
                     else
                     {
@@ -43,16 +43,16 @@
             }
         }
 
-        public static void GetReward(IWeapon weapon, IHero hero)
+        public static void GetReward(IItem item, IHero hero)
         {
-            if (weapon is Sword)
+            if (item is Sword)
             {
-                hero.Sword = weapon as Sword;
+                hero.Sword = item as Sword;
                 Dialoge.NewSword(hero.Sword);
             }
             else
             {
-                hero.Shield = weapon as Shield;
+                hero.Shield = item as Shield;
                 Dialoge.NewShield(hero.Shield);
             }
             hero.LevelUp();

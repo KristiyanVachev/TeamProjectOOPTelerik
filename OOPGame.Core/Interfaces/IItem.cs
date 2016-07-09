@@ -1,6 +1,6 @@
 ﻿namespace OOPGame.Core.Interfaces
 {
-    public interface IWeapon
+    public interface IItem
     {
         string Name { get; set; }
     }

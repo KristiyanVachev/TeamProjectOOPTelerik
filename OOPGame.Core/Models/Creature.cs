@@ -1,10 +1,7 @@
 ﻿namespace OOPGame.Core.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+
     using OOPGame.Core.Interfaces;
     using OOPGame.Core.Infrastructure;
 
@@ -14,6 +11,26 @@
         private string name;
         private readonly int[] attackChance = { 80, 60, 30 };
         private readonly double[] attackPower = { 0.5, 1, 2 };
+
+        //constrcutors
+        protected Creature(string name)
+        {
+            this.Name = name;
+        }
+
+        protected Creature(string name, int maxHp, int damage, int armor, int level, string weakAttackName, string strongAttackName, string ultimateAttackName) : 
+            this (name)
+        {
+            this.MaxHp = maxHp;
+            this.Hp = maxHp;
+            this.Damage = damage;
+            this.Armor = armor;
+            this.Level = level;
+            this.AttackNames = new string[3];
+            this.AttackNames[0] = weakAttackName;
+            this.AttackNames[1] = strongAttackName;
+            this.AttackNames[2] = ultimateAttackName;
+        }
 
         //properties
         public string Name
@@ -25,19 +42,13 @@
             set
             {
                 //simple validation
-                if (value == string.Empty)
-                {
-                    this.name = "Poop";
-                }
-                else
-                {
-                    this.name = value;
-                }
+                this.name = string.IsNullOrEmpty(value) ? "Stamat" : value;
             }
         }
-        public int MaxHP { get; set; }
 
-        public int HP { get; set; }
+        public int MaxHp { get; set; }
+
+        public int Hp { get; set; }
 
         public int Damage { get; set; }
 
@@ -51,20 +62,13 @@
 
         public string[] AttackNames { get; set; }
 
-        public string WeakAttackName { get; set; }
 
-        public string StrongAttackName { get; set; }
-
-        public string UltimateAttackName { get; set; }
-
-        //constrcutors
-        protected Creature(string name)
-        {
-            this.Name = name;
-        }
+        //redundant
+        //public string WeakAttackName { get; set; }
+        //public string StrongAttackName { get; set; }
+        //public string UltimateAttackName { get; set; }
 
         //methods
-
         public int Attack(int chance, double multiplier)
         {
             //80% chance for a strike
@@ -72,11 +76,11 @@
             {
                 return Convert.ToInt32(this.Damage * multiplier);
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
+
         }
+
         public int WeakAttack()
         {
             //80% chance for a strike
@@ -84,10 +88,8 @@
             {
                 return this.Damage / 2;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
 
         public int StrongAttack()
@@ -97,10 +99,8 @@
             {
                 return this.Damage;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
 
         public int UltimateAttack()
@@ -110,11 +110,10 @@
             {
                 return this.Damage * 2;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
-        public abstract string FinalWords();
+
+        public abstract void FinalWords();
     }
 }

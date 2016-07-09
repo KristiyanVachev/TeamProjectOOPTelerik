@@ -1,36 +1,20 @@
 ﻿namespace OOPGame.Core.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using OOPGame.Core.Interfaces;
 
     public class Hero : Creature, IHero
     {
         //fields
 
-        //properties
-        public int Experience { get; set; }
-
-        public int BasicArmor { get; set; }
-
-        public Shield Shield { get; set; }
-
-        public int BasicDamage { get; set; }
-
-        public Sword Sword { get; set; }
-
-        public int PotionsCount { get; set; }
-
         //Constructors
         public Hero(string name) : base(name)
-        {
+        {     
+            //TODO: create logic for hero initiliasation, that avoids those hardcodes bellow
             this.Experience = 0;
             this.Level = 1;
-            this.MaxHP = 100;
-            this.HP = this.MaxHP;
+            this.MaxHp = 100;
+            this.Hp = this.MaxHp;
             this.BasicArmor = 5;
             this.Shield = new Shield("Wooden Round Shield", 20);
             this.Armor = this.BasicArmor + this.Shield.Armor;
@@ -44,35 +28,59 @@
             this.AttackNames[2] = "MEGA cool Attack";
         }
 
+        public Hero(string name, int maxHp, int damage, int armor, int level, string weakAttackName, string strongAttackName, string ultimateAttackName) :
+            base(name, maxHp, damage, armor, level, weakAttackName, strongAttackName, ultimateAttackName)
+        {
+           
+        }
+
+
+        //properties
+
+        public int Experience { get; set; }
+
+        public int BasicArmor { get; set; }
+
+        public Shield Shield { get; set; }
+
+        public int BasicDamage { get; set; }
+
+        public Sword Sword { get; set; }
+
+        public int PotionsCount { get; set; }
+
+
         //Methods
 
+        //TODO: take notice of potion count when the hero's inventory is implamented (which maybe renders this method redundant..)
         public void UsePotion()
         {
             if (this.PotionsCount > 1)
             {
                 //potions restore 50% of max health
-                int restoredHP = this.MaxHP / 2;
-                if (this.HP + restoredHP > this.MaxHP)
+                int restoredHp = this.MaxHp / 2;
+                if (this.Hp + restoredHp > this.MaxHp)
                 {
-                    this.HP = this.MaxHP;
+                    this.Hp = this.MaxHp;
                 }
                 else
                 {
-                    this.HP += restoredHP;
+                    this.Hp += restoredHp;
                 }
+                this.PotionsCount--;
             }
         }
 
-        public override string FinalWords()
+        public override void FinalWords()
         {
-            return "Ahh you bastard!";
+            Console.WriteLine("Ahh you bastard!");
         }
 
         public void LevelUp()
         {
             this.Level++;
-            this.MaxHP += 100;
-            this.HP = MaxHP;
+            this.MaxHp += 100;
+            this.Hp = MaxHp;
             this.BasicArmor += 5;
             this.Armor = this.BasicArmor + this.Shield.Armor;
             this.BasicDamage += 15;

@@ -14,7 +14,7 @@
             IHero hero = new Hero(name);
 
             IMonster[] monsters = Seed.SeedMonsters();
-            IWeapon[] weapons = Seed.SeedRewards();
+            IItem[] items = Seed.SeedRewards();
 
             bool finalBoss = false;
             const int meetMonsterOpt = 2;
@@ -47,7 +47,7 @@
                 if (input == 0)
                 {
                     //Fight until one is dead
-                    while (hero.HP > 0 && monsters[i].HP > 0)
+                    while (hero.Hp > 0 && monsters[i].Hp > 0)
                     {
                         Dialoge.HeroAttackOptions(hero);
                         input = Utillities.ValidateAnswer(attackMenuOpt);
@@ -59,14 +59,14 @@
                             //Hero attacks monster
                             Action.Attack(hero, monsters[i], input);
                             //If monster is dead
-                            if (monsters[i].HP <= 0)
+                            if (monsters[i].Hp <= 0)
                             {
                                 //Killing a commom monster
                                 if (!finalBoss)
                                 {
                                     Dialoge.MonsterDefeated(monsters[i]);
 
-                                    Action.GetReward(weapons[i], hero);
+                                    Action.GetReward(items[i], hero);
                                     break;
                                 }
                                 //Killing the Boss
@@ -82,7 +82,7 @@
                                 Action.Attack(monsters[i], hero, 0);
                             }
                             //If hero dies
-                            if (hero.HP <= 0)
+                            if (hero.Hp <= 0)
                             {
                                 Dialoge.HeroDied();
                                 break;
@@ -93,7 +93,7 @@
                         {
                             Action.DrinkPotion(hero);
                             Action.Attack(monsters[i], hero, 0);
-                            if (hero.HP <= 0)
+                            if (hero.Hp <= 0)
                             {
                                 Dialoge.HeroDied();
                                 break;
@@ -106,16 +106,14 @@
                 {
                     //Monster always inflicts damage on a fleeing opponent
                     int damageSuffered = monsters[i].DamageOnFlee();
-                    hero.HP -= damageSuffered;
-                    if (hero.HP <= 0)
+                    hero.Hp -= damageSuffered;
+                    if (hero.Hp <= 0)
                     {
                         Dialoge.HeroDiedFleeing();
                         break;
                     }
-                    else
-                    {
-                        Dialoge.DamageTakenOnFlee(monsters[i], hero, damageSuffered);
-                    }
+
+                    Dialoge.DamageTakenOnFlee(monsters[i], hero, damageSuffered);
                 }
             }
         }

@@ -1,7 +1,7 @@
 ﻿namespace OOPGame.Core.Interfaces
 {
-    public interface IPotion
+    public interface IPotion : IItem
     {
-        int HPPercantageRestore { get; set; }
+        int HpPercantageRestore { get; set; }
     }
 }

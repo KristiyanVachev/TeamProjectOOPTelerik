@@ -38,7 +38,7 @@
 
         public static void DamageTakenOnFlee(IMonster monster, IHero hero, int damageSuffered)
         {
-            Console.WriteLine("While you were fleeing {0} dealth you {1}. You now have {2}HP.", monster.Name, damageSuffered, hero.HP);
+            Console.WriteLine("While you were fleeing {0} dealth you {1}. You now have {2}HP.", monster.Name, damageSuffered, hero.Hp);
 
         }
 
@@ -64,12 +64,12 @@
 
         public static void NewLevel(IHero hero)
         {
-            Console.WriteLine("{0} - HP: {1} - Damage: {2} - Armor: {3}", hero.Name, hero.HP, hero.Damage, hero.Armor);
+            Console.WriteLine("{0} - HP: {1} - Damage: {2} - Armor: {3}", hero.Name, hero.Hp, hero.Damage, hero.Armor);
         }
 
         public static void UsedPotion(IHero hero)
         {
-            Console.WriteLine("You used a potion and now have {0}HP.", hero.HP);
+            Console.WriteLine("You used a potion and now have {0}HP.", hero.Hp);
         }
 
         public static void NoPotions()

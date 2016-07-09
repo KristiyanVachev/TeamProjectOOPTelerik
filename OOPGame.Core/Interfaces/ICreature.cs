@@ -5,9 +5,9 @@
         //properties
         string Name { get; set; }
 
-        int MaxHP { get; set; }
+        int MaxHp { get; set; }
 
-        int HP { get; set; }
+        int Hp { get; set; }
 
         int Damage { get; set; }
 
@@ -21,11 +21,11 @@
 
         string[] AttackNames { get; set; }
 
-        string WeakAttackName { get; set; }
 
-        string StrongAttackName { get; set; }
-
-        string UltimateAttackName { get; set; }
+        //Redundant
+        //string WeakAttackName { get; set; }
+        //string StrongAttackName { get; set; }
+        //string UltimateAttackName { get; set; }
 
         //methods
         int Attack(int chance, double multiplier);
@@ -36,6 +36,6 @@
 
         int UltimateAttack();
 
-        string FinalWords();
+        void FinalWords();
     }
 }

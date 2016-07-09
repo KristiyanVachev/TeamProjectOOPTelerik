@@ -4,9 +4,9 @@
     using OOPGame.Core.Models;
     using OOPGame.Core.Interfaces;
 
-    class Startup
+    public class Startup
     {
-        static void Main()
+        private static void Main()
         {
            Engine.Initialize();
         }
