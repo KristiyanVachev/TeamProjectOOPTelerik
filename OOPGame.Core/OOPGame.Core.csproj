@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\RandomChance.cs" />
+    <Compile Include="Interfaces\IConsumable.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
     <Compile Include="Interfaces\IHero.cs" />
     <Compile Include="Interfaces\IInventory.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Interfaces\IPotion.cs" />
     <Compile Include="Interfaces\IShield.cs" />
     <Compile Include="Interfaces\ISword.cs" />
+    <Compile Include="Interfaces\IWearable.cs" />
     <Compile Include="Models\BossMonster.cs" />
     <Compile Include="Models\Creature.cs" />
     <Compile Include="Models\Hero.cs" />
