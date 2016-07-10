@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\ModelEventArgs.cs" />
     <Compile Include="Infrastructure\RandomChance.cs" />
+    <Compile Include="Infrastructure\Seed.cs" />
     <Compile Include="Interfaces\IConsumable.cs" />
     <Compile Include="Interfaces\ICreature.cs" />
     <Compile Include="Interfaces\IHero.cs" />
@@ -64,6 +65,11 @@
     <Compile Include="Models\Sword.cs" />
     <Compile Include="Models\WeakMonster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Infrastructure\Database\BossDB.txt" />
+    <Content Include="Infrastructure\Database\PowerfulMonstersDB.txt" />
+    <Content Include="Infrastructure\Database\WeakMonstersDB.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

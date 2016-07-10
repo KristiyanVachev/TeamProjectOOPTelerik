@@ -1,9 +1,14 @@
-﻿namespace OOPGame.ConsoleClient
+﻿
+
+using System.Collections.Generic;
+
+namespace OOPGame.ConsoleClient
 {
     using System;
 
     using Core.Interfaces;
     using Core.Models;
+    using Core.Infrastructure;
 
     public static class Engine
     {
@@ -24,16 +29,16 @@
 
             EngineMethods.MonsterDefeated += Dialoge.OnMonsterDefeated;
 
-            IMonster[] monsters = Seed.SeedMonsters();
+            IList<Monster> monsters = Seed.SeedMonsters();
             IItem[] items = Seed.SeedRewards();
 
-            int bossIndex = monsters.Length - 1;
+            int bossIndex = monsters.Count - 1;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
 
             //Meet every monster.
-            for (int i = 0; i < monsters.Length; i++)
+            for (int i = 0; i < monsters.Count; i++)
             {
                 if (hero.Hp <= 0) // .IsDead trigers event and prints twice death message
                 {

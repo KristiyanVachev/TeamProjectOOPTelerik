@@ -1,4 +1,7 @@
-﻿namespace OOPGame.ConsoleClient
+﻿using System.Collections.Generic;
+using OOPGame.Core.Models;
+
+namespace OOPGame.ConsoleClient
 {
     using System;
 
@@ -18,7 +21,7 @@
             }
             return finalBoss;
         }
-        public static void Fighting(IHero hero, IMonster[] monsters, int i, IItem[] items, bool finalBoss)
+        public static void Fighting(IHero hero, IList<Monster> monsters, int i, IItem[] items, bool finalBoss)
         {
            
             const int attackMenuOpt = 4;
@@ -74,7 +77,7 @@
                 }
             }
         }
-        public static int Menu(int i, bool finalBoss, IMonster[] monsters)
+        public static int Menu(int i, bool finalBoss, IList<Monster> monsters)
         {
             const int meetMonsterOpt = 2;
             int input;

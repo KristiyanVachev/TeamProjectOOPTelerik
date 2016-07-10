@@ -1,0 +1,1 @@
+﻿Beever, 300, 60, 30, 3, Scrach, Bite, Tree crushing

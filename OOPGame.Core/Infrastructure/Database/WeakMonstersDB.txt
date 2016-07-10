@@ -1,0 +1,2 @@
+Stupid Panda, 100, 20, 10, 1, Fur blow, Bamboo strike, Bamboo spear throw
+Killer Whale, 200, 40, 20, 2, Water shot, Tail punch, Ripping bite
