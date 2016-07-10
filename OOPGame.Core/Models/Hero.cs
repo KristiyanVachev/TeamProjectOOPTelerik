@@ -56,7 +56,7 @@
         //TODO: take notice of potion count when the hero's inventory is implamented (which maybe renders this method redundant..)
         public void UsePotion()
         {
-            if (this.PotionsCount > 1)
+            if (this.PotionsCount > 0)
             {
                 //potions restore 50% of max health
                 int restoredHp = this.MaxHp / 2;

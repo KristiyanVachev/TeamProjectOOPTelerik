@@ -22,7 +22,7 @@
                     //If defender is dead.
                     if (deffender.Hp > 0)
                     {
-                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage. {deffender.Name} now has {deffender.Hp}HP");
+                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage, with {attacker.AttackNames[answer]}. {deffender.Name} now has {deffender.Hp}HP");
                     }
                     else
                     {
@@ -48,6 +48,7 @@
             if (item is Sword)
             {
                 hero.Sword = item as Sword;
+                hero.AttackNames[1] = (item as Sword).AttackName;
                 Dialoge.NewSword(hero.Sword);
             }
             else

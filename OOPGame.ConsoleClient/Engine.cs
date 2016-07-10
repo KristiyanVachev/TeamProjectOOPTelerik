@@ -17,25 +17,28 @@
 
             hero.Dead += Dialoge.OnHeroDead;
 
-
             IMonster[] monsters = Seed.SeedMonsters();
             IItem[] items = Seed.SeedRewards();
 
-            bool finalBoss = false;
             int bossIndex = monsters.Length - 1;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            
+
             //Meet every monster.
             for (int i = 0; i < monsters.Length; i++)
             {
+                if (hero.Hp <= 0) // .IsDead trigers event and prints twice death message
+                {
+                    break;
+                }
+
                 //If you are up against the final monster -> special boss dialog.
-                finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
+                var finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
 
                 //Hero attack or flee menu
                 int input = EngineMethods.Menu(i, finalBoss, monsters);
-                
+
                 //Option fight
                 if (input == 0)
                 {

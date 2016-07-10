@@ -15,5 +15,11 @@ namespace OOPGame.Core.Infrastructure
 
             return rnd < chance;
         }
+
+        public static int MonsterSkillRandom()
+        {
+            var rnd = new Random();
+           return rnd.Next(0, 3);
+        }
     }
 }
