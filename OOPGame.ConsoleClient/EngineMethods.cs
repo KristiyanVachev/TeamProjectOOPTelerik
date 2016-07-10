@@ -1,12 +1,15 @@
 ﻿namespace OOPGame.ConsoleClient
 {
+    using System;
+
     using Core.Interfaces;
-    using OOPGame.Core.Infrastructure;
+    using Core.Infrastructure;
 
     public static class EngineMethods
     {
+        public static event EventHandler<MonsterArgs> MonsterDefeated;
 
-        public static bool CheckForFinalMonster(int i, int bossIndex)
+        public static bool CheckForFinalMonster(int i,int bossIndex)
         {
             bool finalBoss = false;
             if (i == bossIndex)
@@ -15,12 +18,9 @@
             }
             return finalBoss;
         }
-        public static void Fighting(IHero hero, IMonster[] monsters, int i, IItem[] items, bool finalBoss)
+        public static void Fighting(IHero hero,IMonster[] monsters,int i, IItem[] items,bool finalBoss)
         {
-
-
-
-
+           
             const int attackMenuOpt = 4;
             int input = 0;
             while (hero.Hp > 0 && monsters[i].Hp > 0)
@@ -37,11 +37,10 @@
                     //If monster is dead
                     if (monsters[i].Hp <= 0)
                     {
+                        OnMonsterDefeated(monsters[i]);
                         //Killing a commom monster
                         if (!finalBoss)
-                        {
-                            Dialoge.MonsterDefeated(monsters[i]);
-
+                        { 
                             Action.GetReward(items[i], hero);
                             break;
                         }
@@ -55,12 +54,12 @@
                     //Monster still alive
                     else
                     {
-                        Action.Attack(monsters[i], hero, RandomChance.MonsterSkillRandom());
+                        Action.Attack(monsters[i], hero, 0);
                     }
                     //If hero dies
                     if (hero.IsDead())
-                    {
-                        return;
+                    {   
+                        break;
                     }
                 }
                 //answer left is 3, drink potion
@@ -70,12 +69,12 @@
                     Action.Attack(monsters[i], hero, 0);
                     if (hero.IsDead())
                     {
-                        return;
+                        break;
                     }
                 }
             }
         }
-        public static int Menu(int i, bool finalBoss, IMonster[] monsters)
+        public static int Menu(int i,bool finalBoss,IMonster[] monsters)
         {
             const int meetMonsterOpt = 2;
             int input;
@@ -92,5 +91,9 @@
             return input;
         }
 
-    }
+        public static void OnMonsterDefeated(IMonster monster)
+        {
+            MonsterDefeated?.Invoke(null,new MonsterArgs() { Monster = monster});
+        }
+    }   
 }

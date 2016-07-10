@@ -1,6 +1,6 @@
 ﻿namespace OOPGame.Core.Models
 {
-    using OOPGame.Core.Interfaces;
+    using Interfaces;
 
     public class Potion : Item, IPotion
     {

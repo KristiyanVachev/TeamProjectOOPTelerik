@@ -1,9 +1,6 @@
 ﻿namespace OOPGame.ConsoleClient
 {
     using System;
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Infrastructure;
-    using OOPGame.Core.Models;
 
     public static class Utillities
     {
@@ -14,14 +11,14 @@
                 try
                 {
                     int answer = int.Parse(Console.ReadLine());
+
                     if (answer >= 0 && answer < scopeEnd)
                     {
                         return answer;
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid number. Select a number between 0 and {0}", scopeEnd);
-                    }
+
+                    Console.WriteLine("Invalid number. Select a number between 0 and {0}", scopeEnd);
+
                 }
                 catch (Exception)
                 {

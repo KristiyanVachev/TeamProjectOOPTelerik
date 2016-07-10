@@ -1,13 +1,12 @@
 ﻿namespace OOPGame.Core.Models
 {
     using System;
-    using OOPGame.Core.Interfaces;
+    using Interfaces;
+    using Infrastructure;
 
     public class Hero : Creature, IHero
     {
-        //fields
-
-        //Constructors
+        #region ctors
         public Hero(string name) : base(name)
         {     
             //TODO: create logic for hero initiliasation, that avoids those hardcodes bellow
@@ -33,11 +32,14 @@
         {
            
         }
+        #endregion ctors
 
+        #region IHero Events
         public event EventHandler Dead;
+        public event EventHandler<HeroArgs> DrinkPotion;
+        #endregion
 
-        //properties
-
+        #region Properties
         public int Experience { get; set; }
 
         public int BasicArmor { get; set; }
@@ -49,15 +51,15 @@
         public Sword Sword { get; set; }
 
         public int PotionsCount { get; set; }
+        #endregion
 
-
-        //Methods
-
+        #region Public Methods
         //TODO: take notice of potion count when the hero's inventory is implamented (which maybe renders this method redundant..)
         public void UsePotion()
         {
             if (this.PotionsCount > 0)
             {
+                OnDrinkPotion();
                 //potions restore 50% of max health
                 int restoredHp = this.MaxHp / 2;
                 if (this.Hp + restoredHp > this.MaxHp)
@@ -97,10 +99,18 @@
             }
             return false;
         }
+        #endregion
 
+        #region Protected  Methods
+        // Methods responsible for raising Hero events.
         protected virtual void OnDead()
         {
             Dead?.Invoke(this,EventArgs.Empty);
         }
+        protected virtual void OnDrinkPotion()
+        {
+            DrinkPotion?.Invoke(this,new HeroArgs() { Hero = this});
+        }
+        #endregion
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface ICreature
     {
-        //properties
+        #region Properties
         string Name { get; set; }
 
         int MaxHp { get; set; }
@@ -20,14 +20,9 @@
         double[] AttackPower { get; }
 
         string[] AttackNames { get; set; }
+        #endregion
 
-
-        //Redundant
-        //string WeakAttackName { get; set; }
-        //string StrongAttackName { get; set; }
-        //string UltimateAttackName { get; set; }
-
-        //methods
+        #region Methods
         int Attack(int chance, double multiplier);
 
         int WeakAttack();
@@ -39,5 +34,6 @@
         void FinalWords();
 
         bool IsDead();
+        #endregion
     }
 }

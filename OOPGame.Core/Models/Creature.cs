@@ -7,32 +7,34 @@
 
     public abstract class Creature : ICreature
     {
-        //fields
+        #region Fields
         private string name;
         private readonly int[] attackChance = { 80, 60, 30 };
         private readonly double[] attackPower = { 0.5, 1, 2 };
+        #endregion
 
-        //constrcutors
-        protected Creature(string name)
-        {
-            this.Name = name;
-        }
+        #region ctors
+                protected Creature(string name)
+                {
+                    this.Name = name;
+                }
 
-        protected Creature(string name, int maxHp, int damage, int armor, int level, string weakAttackName, string strongAttackName, string ultimateAttackName) : 
-            this (name)
-        {
-            this.MaxHp = maxHp;
-            this.Hp = maxHp;
-            this.Damage = damage;
-            this.Armor = armor;
-            this.Level = level;
-            this.AttackNames = new string[3];
-            this.AttackNames[0] = weakAttackName;
-            this.AttackNames[1] = strongAttackName;
-            this.AttackNames[2] = ultimateAttackName;
-        }
+                protected Creature(string name, int maxHp, int damage, int armor, int level, string weakAttackName, string strongAttackName, string ultimateAttackName) : 
+                    this (name)
+                {
+                    this.MaxHp = maxHp;
+                    this.Hp = maxHp;
+                    this.Damage = damage;
+                    this.Armor = armor;
+                    this.Level = level;
+                    this.AttackNames = new string[3];
+                    this.AttackNames[0] = weakAttackName;
+                    this.AttackNames[1] = strongAttackName;
+                    this.AttackNames[2] = ultimateAttackName;
+                }
+        #endregion
 
-        //properties
+        #region Properties
         public string Name
         {
             get
@@ -61,14 +63,9 @@
         public double[] AttackPower { get { return this.attackPower; } }
 
         public string[] AttackNames { get; set; }
+        #endregion
 
-
-        //redundant
-        //public string WeakAttackName { get; set; }
-        //public string StrongAttackName { get; set; }
-        //public string UltimateAttackName { get; set; }
-
-        //methods
+        #region Public Methods
         public int Attack(int chance, double multiplier)
         {
             //80% chance for a strike
@@ -120,6 +117,6 @@
         }
 
         public abstract void FinalWords();
-        
+        #endregion
     }
 }

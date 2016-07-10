@@ -1,9 +1,9 @@
 ﻿namespace OOPGame.ConsoleClient
 {
     using System;
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Infrastructure;
-    using OOPGame.Core.Models;
+    using Core.Interfaces;
+    using Core.Infrastructure;
+    using Core.Models;
 
     public static class Action
     {
@@ -22,7 +22,7 @@
                     //If defender is dead.
                     if (deffender.Hp > 0)
                     {
-                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage, with {attacker.AttackNames[answer]}. {deffender.Name} now has {deffender.Hp}HP");
+                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage. {deffender.Name} now has {deffender.Hp}HP");
                     }
                     else
                     {
@@ -47,8 +47,7 @@
         {
             if (item is Sword)
             {
-                hero.Sword = item as Sword;
-                hero.AttackNames[1] = (item as Sword).AttackName;
+                hero.Sword = (Sword)item;
                 Dialoge.NewSword(hero.Sword);
             }
             else
@@ -65,18 +64,11 @@
             if (hero.PotionsCount > 0)
             {
                 hero.UsePotion();
-                Dialoge.UsedPotion(hero);
             }
             else
             {
                 Dialoge.NoPotions();
             }
         }
-
-        //To-Do
-        //public static void Fight(IHero hero, IMonster monster)
-        //{
-
-        //}
     }
 }

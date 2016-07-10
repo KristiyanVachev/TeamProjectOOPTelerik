@@ -1,6 +1,6 @@
 ﻿namespace OOPGame.Core.Interfaces
 {
-    public interface IPotion : IItem , IConsumable
+    public interface IPotion : IConsumable
     {
         int HpPercantageRestore { get; set; }
     }

@@ -2,20 +2,28 @@
 {
     using System;
 
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Models;
-    using System.Reflection.Emit;
-    using System.Security.Policy;
+    using Core.Interfaces;
+    using Core.Models;
+
     public static class Engine
     {
+        private static event EventHandler Start;
+
         public static void Initialize()
         {
-            Dialoge.printingLuiKang();
-            Console.Write("Enter your hero's name: ");
+
+            Start += Dialoge.OnStart;
+
+            OnStart();
+
             string name = Console.ReadLine();
             IHero hero = new Hero(name);
 
             hero.Dead += Dialoge.OnHeroDead;
+            hero.DrinkPotion += Dialoge.OnUsedPotion;
+
+            EngineMethods.MonsterDefeated += Dialoge.OnMonsterDefeated;
+
 
             IMonster[] monsters = Seed.SeedMonsters();
             IItem[] items = Seed.SeedRewards();
@@ -24,21 +32,16 @@
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-
+            
             //Meet every monster.
             for (int i = 0; i < monsters.Length; i++)
             {
-                if (hero.Hp <= 0) // .IsDead trigers event and prints twice death message
-                {
-                    break;
-                }
-
                 //If you are up against the final monster -> special boss dialog.
-                var finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
+                bool finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
 
                 //Hero attack or flee menu
                 int input = EngineMethods.Menu(i, finalBoss, monsters);
-
+                
                 //Option fight
                 if (input == 0)
                 {
@@ -60,5 +63,11 @@
                 }
             }
         }
+
+        private static void OnStart()
+        {
+            Start?.Invoke(null,EventArgs.Empty);
+        }
     }
+
 }

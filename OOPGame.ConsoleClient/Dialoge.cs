@@ -1,21 +1,12 @@
-﻿namespace OOPGame.ConsoleClient
+﻿using OOPGame.Core.Infrastructure;
+
+namespace OOPGame.ConsoleClient
 {
     using System;
     using Core.Interfaces;
 
     public class Dialoge
     {
-        public static void printingLuiKang()
-        {
-            string s = "LIU KANG TEAM PROJECT";
-            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(s);
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Black;
-
-        }
         public static void MeetMonster(IMonster monster)
         {
             Console.BackgroundColor = ConsoleColor.Gray;
@@ -37,11 +28,6 @@
                 Console.WriteLine("{0}. Attack with {1}", j, hero.AttackNames[j]);
             }
             Console.WriteLine("3. Drink potion");
-        }
-
-        public static void MonsterDefeated(IMonster monster)
-        {
-            Console.WriteLine("You have defeated {0} and have reached a new level.", monster.Name);
         }
 
         public static void BossDefeated(IMonster boss)
@@ -75,11 +61,6 @@
             Console.WriteLine("{0} - HP: {1} - Damage: {2} - Armor: {3}", hero.Name, hero.Hp, hero.Damage, hero.Armor);
         }
 
-        public static void UsedPotion(IHero hero)
-        {
-            Console.WriteLine("You used a potion and now have {0}HP.", hero.Hp);
-        }
-
         public static void NoPotions()
         {
             Console.WriteLine("You don't have any potions.");
@@ -88,6 +69,25 @@
         public static void OnHeroDead(object source, EventArgs args)
         {
             Console.WriteLine("You have died and have failed your princess.");
+        }
+        public static void OnStart(object source, EventArgs args)
+        {
+            string s = "LIU KANG TEAM PROJECT";
+            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(s);
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("Enter your hero's name: ");
+        }
+        public static void OnMonsterDefeated(object source, MonsterArgs args)
+        {
+            Console.WriteLine("You have defeated {0} and have reached a new level.", args.Monster.Name);
+        }
+        public static void OnUsedPotion(object source, HeroArgs args)
+        {
+            Console.WriteLine("You used a potion and now have {0}HP.", args.Hero.Hp);
         }
     }
 }
