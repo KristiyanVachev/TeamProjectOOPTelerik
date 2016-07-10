@@ -30,11 +30,6 @@ namespace OOPGame.ConsoleClient
             Console.WriteLine("3. Drink potion");
         }
 
-        public static void MonsterDefeated(IMonster monster)
-        {
-            
-        }
-
         public static void BossDefeated(IMonster boss)
         {
             Console.WriteLine("You have defeated the ëvil {0} and have saved your princess.", boss.Name);
