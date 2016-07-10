@@ -64,7 +64,6 @@
             if (hero.PotionsCount > 0)
             {
                 hero.UsePotion();
-                Dialoge.UsedPotion(hero);
             }
             else
             {

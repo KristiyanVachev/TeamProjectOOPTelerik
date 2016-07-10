@@ -20,6 +20,7 @@
             IHero hero = new Hero(name);
 
             hero.Dead += Dialoge.OnHeroDead;
+            hero.DrinkPotion += Dialoge.OnUsedPotion;
 
             EngineMethods.MonsterDefeated += Dialoge.OnMonsterDefeated;
 

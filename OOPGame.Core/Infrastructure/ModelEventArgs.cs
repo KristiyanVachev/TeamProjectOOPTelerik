@@ -7,4 +7,9 @@
     {
         public IMonster Monster { get; set; }
     }
+
+    public class HeroArgs : EventArgs
+    {
+        public IHero Hero { get; set; }
+    }
 }

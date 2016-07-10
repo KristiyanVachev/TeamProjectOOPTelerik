@@ -1,7 +1,8 @@
 ﻿namespace OOPGame.Core.Models
 {
     using System;
-    using OOPGame.Core.Interfaces;
+    using Interfaces;
+    using Infrastructure;
 
     public class Hero : Creature, IHero
     {
@@ -35,6 +36,7 @@
         }
 
         public event EventHandler Dead;
+        public event EventHandler<HeroArgs> DrinkPotion; 
 
         //properties
 
@@ -58,6 +60,7 @@
         {
             if (this.PotionsCount > 1)
             {
+                OnDrinkPotion();
                 //potions restore 50% of max health
                 int restoredHp = this.MaxHp / 2;
                 if (this.Hp + restoredHp > this.MaxHp)
@@ -101,6 +104,10 @@
         protected virtual void OnDead()
         {
             Dead?.Invoke(this,EventArgs.Empty);
+        }
+        protected virtual void OnDrinkPotion()
+        {
+            DrinkPotion?.Invoke(this,new HeroArgs() { Hero = this});
         }
     }
 }

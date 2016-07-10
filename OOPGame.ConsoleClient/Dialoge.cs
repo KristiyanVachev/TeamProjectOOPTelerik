@@ -61,11 +61,6 @@ namespace OOPGame.ConsoleClient
             Console.WriteLine("{0} - HP: {1} - Damage: {2} - Armor: {3}", hero.Name, hero.Hp, hero.Damage, hero.Armor);
         }
 
-        public static void UsedPotion(IHero hero)
-        {
-            Console.WriteLine("You used a potion and now have {0}HP.", hero.Hp);
-        }
-
         public static void NoPotions()
         {
             Console.WriteLine("You don't have any potions.");
@@ -89,6 +84,10 @@ namespace OOPGame.ConsoleClient
         public static void OnMonsterDefeated(object source, MonsterArgs args)
         {
             Console.WriteLine("You have defeated {0} and have reached a new level.", args.Monster.Name);
+        }
+        public static void OnUsedPotion(object source, HeroArgs args)
+        {
+            Console.WriteLine("You used a potion and now have {0}HP.", args.Hero.Hp);
         }
     }
 }
