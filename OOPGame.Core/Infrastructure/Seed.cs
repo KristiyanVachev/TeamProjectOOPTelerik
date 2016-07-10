@@ -40,7 +40,8 @@
         private static ICollection<WeakMonster> GetWeakMonsters()
         {
             List<WeakMonster> monsters = new List<WeakMonster>();
-            string[] weakMonsters = File.ReadAllLines(@"E:\TeamProjectOOPTelerik\OOPGame.Core\Infrastructure\Database\WeakMonstersDB.txt");
+            string[] weakMonsters = File.ReadAllLines(Path.GetFullPath(@"..\..\..\OOPGame.Core\Infrastructure\Database\WeakMonstersDB.txt"));
+
 
             foreach (var weakMonster in weakMonsters)
             {
@@ -60,7 +61,7 @@
         {
             List<PowerfulMonster> monsters = new List<PowerfulMonster>();
 
-            string[] powerfulMonsters = File.ReadAllLines(@"E:\TeamProjectOOPTelerik\OOPGame.Core\Infrastructure\Database\PowerfulMonstersDB.txt");
+            string[] powerfulMonsters = File.ReadAllLines(Path.GetFullPath(@"..\..\..\OOPGame.Core\Infrastructure\Database\PowerfulMonstersDB.txt"));
 
             foreach (var powerfulMonster in powerfulMonsters)
             {
@@ -78,7 +79,7 @@
         private static ICollection<BossMonster> GetBossMonster()
         {
             List<BossMonster> monsters = new List<BossMonster>();
-            string[] bossMonsters = File.ReadAllLines(@"E:\TeamProjectOOPTelerik\OOPGame.Core\Infrastructure\Database\BossDB.txt");
+            string[] bossMonsters = File.ReadAllLines(Path.GetFullPath(@"..\..\..\OOPGame.Core\Infrastructure\Database\BossDB.txt"));
 
             foreach (var bossMonster in bossMonsters)
             {
