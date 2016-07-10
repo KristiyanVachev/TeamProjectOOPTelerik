@@ -15,6 +15,9 @@
             string name = Console.ReadLine();
             IHero hero = new Hero(name);
 
+            hero.Dead += Dialoge.OnHeroDead;
+
+
             IMonster[] monsters = Seed.SeedMonsters();
             IItem[] items = Seed.SeedRewards();
 
@@ -44,7 +47,7 @@
                 {
                     int damageSuffered = monsters[i].DamageOnFlee();
                     hero.Hp -= damageSuffered;
-                    if (hero.Hp<= 0)
+                    if (hero.IsDead())
                     {
                         Dialoge.HeroDiedFleeing();
                         break;

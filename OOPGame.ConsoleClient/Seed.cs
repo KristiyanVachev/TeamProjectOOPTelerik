@@ -1,7 +1,7 @@
 ﻿namespace OOPGame.ConsoleClient
 {
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Models;
+    using Core.Interfaces;
+    using Core.Models;
 
     public static class Seed
     {

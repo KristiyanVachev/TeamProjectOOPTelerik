@@ -34,6 +34,7 @@
            
         }
 
+        public event EventHandler Dead;
 
         //properties
 
@@ -85,6 +86,21 @@
             this.Armor = this.BasicArmor + this.Shield.Armor;
             this.BasicDamage += 15;
             this.Damage = this.BasicDamage + this.Sword.Damage;
+        }
+
+        public override bool IsDead()
+        {
+            if (base.IsDead())
+            {
+                OnDead();
+                return true;
+            }
+            return false;
+        }
+
+        protected virtual void OnDead()
+        {
+            Dead?.Invoke(this,EventArgs.Empty);
         }
     }
 }

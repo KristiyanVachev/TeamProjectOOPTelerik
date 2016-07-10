@@ -1,9 +1,14 @@
-﻿namespace OOPGame.Core.Interfaces
+﻿
+
+namespace OOPGame.Core.Interfaces
 {
-    using OOPGame.Core.Models;
+    using System;
+    using Models;
 
     public interface IHero : ICreature
     {
+        event EventHandler Dead;
+         
         int Experience { get; set; }
 
         int PotionsCount { get; set; }

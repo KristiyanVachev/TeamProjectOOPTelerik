@@ -1,15 +1,10 @@
-﻿using OOPGame.Core.Interfaces;
-using OOPGame.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOPGame.ConsoleClient
+﻿namespace OOPGame.ConsoleClient
 {
+    using Core.Interfaces;
+
     public static class EngineMethods
     {
+        
         public static bool CheckForFinalMonster(int i,int bossIndex)
         {
             bool finalBoss = false;
@@ -21,6 +16,10 @@ namespace OOPGame.ConsoleClient
         }
         public static void Fighting(IHero hero,IMonster[] monsters,int i, IItem[] items,bool finalBoss)
         {
+           
+            
+
+       
             const int attackMenuOpt = 4;
             int input = 0;
             while (hero.Hp > 0 && monsters[i].Hp > 0)
@@ -58,9 +57,9 @@ namespace OOPGame.ConsoleClient
                         Action.Attack(monsters[i], hero, 0);
                     }
                     //If hero dies
-                    if (hero.Hp <= 0)
+                    if (hero.IsDead())
                     {
-                        Dialoge.HeroDied();
+                        
                         break;
                     }
                 }
@@ -69,9 +68,8 @@ namespace OOPGame.ConsoleClient
                 {
                     Action.DrinkPotion(hero);
                     Action.Attack(monsters[i], hero, 0);
-                    if (hero.Hp <= 0)
+                    if (hero.IsDead())
                     {
-                        Dialoge.HeroDied();
                         break;
                     }
                 }

@@ -2,8 +2,8 @@
 {
     using System;
 
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Infrastructure;
+    using Interfaces;
+    using Infrastructure;
 
     public abstract class Creature : ICreature
     {
@@ -114,6 +114,12 @@
             return 0;
         }
 
+        public virtual bool IsDead()
+        {
+            return this.Hp <= 0;
+        }
+
         public abstract void FinalWords();
+        
     }
 }

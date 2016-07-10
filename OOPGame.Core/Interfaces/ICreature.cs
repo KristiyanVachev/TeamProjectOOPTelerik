@@ -37,5 +37,7 @@
         int UltimateAttack();
 
         void FinalWords();
+
+        bool IsDead();
     }
 }

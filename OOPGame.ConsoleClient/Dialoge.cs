@@ -1,7 +1,7 @@
 ﻿namespace OOPGame.ConsoleClient
 {
     using System;
-    using OOPGame.Core.Interfaces;
+    using Core.Interfaces;
 
     public class Dialoge
     {
@@ -55,11 +55,6 @@
 
         }
 
-        public static void HeroDied()
-        {
-            Console.WriteLine("You have died and have failed your princess.");
-        }
-
         public static void HeroDiedFleeing()
         {
             Console.WriteLine("You have died while fleeing. Shame!");
@@ -90,5 +85,9 @@
             Console.WriteLine("You don't have any potions.");
         }
 
+        public static void OnHeroDead(object source, EventArgs args)
+        {
+            Console.WriteLine("You have died and have failed your princess.");
+        }
     }
 }
