@@ -10,7 +10,8 @@
         private static event EventHandler Start;
 
         public static void Initialize()
-        {            
+        {
+
             Start += Dialoge.OnStart;
 
             OnStart();
@@ -19,6 +20,8 @@
             IHero hero = new Hero(name);
 
             hero.Dead += Dialoge.OnHeroDead;
+
+            EngineMethods.MonsterDefeated += Dialoge.OnMonsterDefeated;
 
 
             IMonster[] monsters = Seed.SeedMonsters();

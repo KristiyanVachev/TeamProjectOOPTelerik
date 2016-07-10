@@ -1,10 +1,14 @@
 ﻿namespace OOPGame.ConsoleClient
 {
+    using System;
+
     using Core.Interfaces;
+    using Core.Infrastructure;
 
     public static class EngineMethods
     {
-        
+        public static event EventHandler<MonsterArgs> MonsterDefeated;
+
         public static bool CheckForFinalMonster(int i,int bossIndex)
         {
             bool finalBoss = false;
@@ -14,12 +18,10 @@
             }
             return finalBoss;
         }
+
         public static void Fighting(IHero hero,IMonster[] monsters,int i, IItem[] items,bool finalBoss)
         {
            
-            
-
-       
             const int attackMenuOpt = 4;
             int input = 0;
             while (hero.Hp > 0 && monsters[i].Hp > 0)
@@ -36,11 +38,10 @@
                     //If monster is dead
                     if (monsters[i].Hp <= 0)
                     {
+                        OnMonsterDefeated(monsters[i]);
                         //Killing a commom monster
                         if (!finalBoss)
-                        {
-                            Dialoge.MonsterDefeated(monsters[i]);
-
+                        { 
                             Action.GetReward(items[i], hero);
                             break;
                         }
@@ -91,6 +92,11 @@
             }
             return input;
         }
-       
+
+
+        public static void OnMonsterDefeated(IMonster monster)
+        {
+            MonsterDefeated?.Invoke(null,new MonsterArgs() { Monster = monster});
+        }
     }   
 }

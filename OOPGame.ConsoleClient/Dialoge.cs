@@ -1,4 +1,6 @@
-﻿namespace OOPGame.ConsoleClient
+﻿using OOPGame.Core.Infrastructure;
+
+namespace OOPGame.ConsoleClient
 {
     using System;
     using Core.Interfaces;
@@ -30,7 +32,7 @@
 
         public static void MonsterDefeated(IMonster monster)
         {
-            Console.WriteLine("You have defeated {0} and have reached a new level.", monster.Name);
+            
         }
 
         public static void BossDefeated(IMonster boss)
@@ -88,6 +90,10 @@
             Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Write("Enter your hero's name: ");
+        }
+        public static void OnMonsterDefeated(object source, MonsterArgs args)
+        {
+            Console.WriteLine("You have defeated {0} and have reached a new level.", args.Monster.Name);
         }
     }
 }
