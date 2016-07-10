@@ -3,7 +3,7 @@
     using System;
 
     using Core.Interfaces;
-    using Core.Infrastructure;
+    using OOPGame.Core.Infrastructure;
 
     public static class EngineMethods
     {
@@ -18,7 +18,7 @@
             }
             return finalBoss;
         }
-        public static void Fighting(IHero hero,IMonster[] monsters,int i, IItem[] items,bool finalBoss)
+        public static void Fighting(IHero hero, IMonster[] monsters, int i, IItem[] items, bool finalBoss)
         {
            
             const int attackMenuOpt = 4;
@@ -54,12 +54,12 @@
                     //Monster still alive
                     else
                     {
-                        Action.Attack(monsters[i], hero, 0);
+                        Action.Attack(monsters[i], hero, RandomChance.MonsterSkillRandom());
                     }
                     //If hero dies
                     if (hero.IsDead())
-                    {   
-                        break;
+                    {
+                        return;
                     }
                 }
                 //answer left is 3, drink potion
@@ -69,12 +69,12 @@
                     Action.Attack(monsters[i], hero, 0);
                     if (hero.IsDead())
                     {
-                        break;
+                        return;
                     }
                 }
             }
         }
-        public static int Menu(int i,bool finalBoss,IMonster[] monsters)
+        public static int Menu(int i, bool finalBoss, IMonster[] monsters)
         {
             const int meetMonsterOpt = 2;
             int input;
