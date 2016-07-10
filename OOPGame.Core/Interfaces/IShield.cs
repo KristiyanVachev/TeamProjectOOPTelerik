@@ -1,6 +1,6 @@
 ﻿namespace OOPGame.Core.Interfaces
 {
-    public interface IShield : IItem , IWearable
+    public interface IShield : IWearable
     {
         int Armor { get; set; }
     }

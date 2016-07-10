@@ -3,20 +3,25 @@
     using System;
     using System.Collections.Generic;
 
-    using OOPGame.Core.Interfaces;
+    using Interfaces;
 
     public class Inventory : IInventory
     {
+        #region Fields
         private readonly ICollection<IItem> itemsCollection;
 
         //private IHero ownerHero;
+        #endregion
 
+        #region ctors
         public Inventory()
         {
             this.itemsCollection = new List<IItem>();
             // this.ownerHero = hero;
         }
+        #endregion
 
+        #region Public Methods
         public void AddItem(IItem item)
         {
             this.itemsCollection.Add(item);
@@ -36,5 +41,6 @@
             var contains = this.itemsCollection.Contains(item);
             return contains;
         }
+        #endregion
     }
 }

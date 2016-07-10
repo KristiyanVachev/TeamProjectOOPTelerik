@@ -28,7 +28,6 @@
             IMonster[] monsters = Seed.SeedMonsters();
             IItem[] items = Seed.SeedRewards();
 
-            bool finalBoss = false;
             int bossIndex = monsters.Length - 1;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.Clear();
@@ -38,7 +37,7 @@
             for (int i = 0; i < monsters.Length; i++)
             {
                 //If you are up against the final monster -> special boss dialog.
-                finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
+                bool finalBoss = EngineMethods.CheckForFinalMonster(i, bossIndex);
 
                 //Hero attack or flee menu
                 int input = EngineMethods.Menu(i, finalBoss, monsters);

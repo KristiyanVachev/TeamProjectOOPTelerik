@@ -18,7 +18,6 @@
             }
             return finalBoss;
         }
-
         public static void Fighting(IHero hero,IMonster[] monsters,int i, IItem[] items,bool finalBoss)
         {
            
@@ -59,8 +58,7 @@
                     }
                     //If hero dies
                     if (hero.IsDead())
-                    {
-                        
+                    {   
                         break;
                     }
                 }
@@ -92,7 +90,6 @@
             }
             return input;
         }
-
 
         public static void OnMonsterDefeated(IMonster monster)
         {

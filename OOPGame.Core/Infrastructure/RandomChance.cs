@@ -1,6 +1,4 @@
-﻿
-
-namespace OOPGame.Core.Infrastructure
+﻿namespace OOPGame.Core.Infrastructure
 {
     using System;
 

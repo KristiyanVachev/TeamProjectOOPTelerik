@@ -6,9 +6,7 @@
 
     public class Hero : Creature, IHero
     {
-        //fields
-
-        //Constructors
+        #region ctors
         public Hero(string name) : base(name)
         {     
             //TODO: create logic for hero initiliasation, that avoids those hardcodes bellow
@@ -34,12 +32,14 @@
         {
            
         }
+        #endregion ctors
 
+        #region IHero Events
         public event EventHandler Dead;
-        public event EventHandler<HeroArgs> DrinkPotion; 
+        public event EventHandler<HeroArgs> DrinkPotion;
+        #endregion
 
-        //properties
-
+        #region Properties
         public int Experience { get; set; }
 
         public int BasicArmor { get; set; }
@@ -51,10 +51,9 @@
         public Sword Sword { get; set; }
 
         public int PotionsCount { get; set; }
+        #endregion
 
-
-        //Methods
-
+        #region Public Methods
         //TODO: take notice of potion count when the hero's inventory is implamented (which maybe renders this method redundant..)
         public void UsePotion()
         {
@@ -100,7 +99,10 @@
             }
             return false;
         }
+        #endregion
 
+        #region Protected  Methods
+        // Methods responsible for raising Hero events.
         protected virtual void OnDead()
         {
             Dead?.Invoke(this,EventArgs.Empty);
@@ -109,5 +111,6 @@
         {
             DrinkPotion?.Invoke(this,new HeroArgs() { Hero = this});
         }
+        #endregion
     }
 }

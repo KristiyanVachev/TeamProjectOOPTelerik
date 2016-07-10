@@ -1,7 +1,6 @@
 ﻿namespace OOPGame.Core.Models
 {
     using System;
-    using OOPGame.Core.Interfaces;
 
     public class WeakMonster : Monster
     {

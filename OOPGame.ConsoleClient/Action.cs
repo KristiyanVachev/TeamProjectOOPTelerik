@@ -1,9 +1,9 @@
 ﻿namespace OOPGame.ConsoleClient
 {
     using System;
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Infrastructure;
-    using OOPGame.Core.Models;
+    using Core.Interfaces;
+    using Core.Infrastructure;
+    using Core.Models;
 
     public static class Action
     {
@@ -47,7 +47,7 @@
         {
             if (item is Sword)
             {
-                hero.Sword = item as Sword;
+                hero.Sword = (Sword)item;
                 Dialoge.NewSword(hero.Sword);
             }
             else
@@ -70,11 +70,5 @@
                 Dialoge.NoPotions();
             }
         }
-
-        //To-Do
-        //public static void Fight(IHero hero, IMonster monster)
-        //{
-
-        //}
     }
 }
