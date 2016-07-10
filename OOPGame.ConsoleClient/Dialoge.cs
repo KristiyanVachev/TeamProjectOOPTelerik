@@ -5,17 +5,6 @@
 
     public class Dialoge
     {
-        public static void printingLuiKang()
-        {
-            string s = "LIU KANG TEAM PROJECT";
-            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(s);
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Black;
-
-        }
         public static void MeetMonster(IMonster monster)
         {
             Console.BackgroundColor = ConsoleColor.Gray;
@@ -88,6 +77,17 @@
         public static void OnHeroDead(object source, EventArgs args)
         {
             Console.WriteLine("You have died and have failed your princess.");
+        }
+        public static void OnStart(object source, EventArgs args)
+        {
+            string s = "LIU KANG TEAM PROJECT";
+            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(s);
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write("Enter your hero's name: ");
         }
     }
 }

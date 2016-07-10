@@ -2,16 +2,19 @@
 {
     using System;
 
-    using OOPGame.Core.Interfaces;
-    using OOPGame.Core.Models;
-    using System.Reflection.Emit;
-    using System.Security.Policy;
+    using Core.Interfaces;
+    using Core.Models;
+
     public static class Engine
     {
+        private static event EventHandler Start;
+
         public static void Initialize()
-        {
-            Dialoge.printingLuiKang();
-            Console.Write("Enter your hero's name: ");
+        {            
+            Start += Dialoge.OnStart;
+
+            OnStart();
+
             string name = Console.ReadLine();
             IHero hero = new Hero(name);
 
@@ -57,5 +60,11 @@
                 }
             }
         }
+
+        private static void OnStart()
+        {
+            Start?.Invoke(null,EventArgs.Empty);
+        }
     }
+
 }
