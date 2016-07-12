@@ -1,5 +1,6 @@
 ﻿namespace OOPGame.Core.Models
 {
+    using System;
     using Interfaces;
 
     public class Potion : Item, IPotion
@@ -10,5 +11,16 @@
         }
 
         public int HpPercantageRestore { get; set; }
+
+        //Destructor
+        ~Potion()
+        {
+          //used by Consuming Potion      
+        }
+
+        public void Consume()
+        {
+            //TODO
+        }
     }
 }

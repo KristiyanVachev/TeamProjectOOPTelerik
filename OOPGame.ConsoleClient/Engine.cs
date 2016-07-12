@@ -12,6 +12,7 @@ namespace OOPGame.ConsoleClient
 
     public static class Engine
     {
+        //common EventHandled to raise the Events by changing state of  different Classes
         private static event EventHandler Start;
 
         public static void Initialize()
