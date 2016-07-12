@@ -3,6 +3,6 @@
     //Items , that can be consumed during runtime.
     public interface IConsumable : IItem
     {
-
+        void Consume();
     }
 }
