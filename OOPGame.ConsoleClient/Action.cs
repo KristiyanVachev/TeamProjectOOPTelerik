@@ -9,6 +9,15 @@
     {
         public static void Attack(ICreature attacker, ICreature deffender, int answer)
         {
+            var colorOnDamageDealth = ConsoleColor.DarkGreen;
+            var colorOnDamageTaken = ConsoleColor.Red;
+            if (attacker is Monster)
+            {
+                colorOnDamageDealth = ConsoleColor.Red;
+                colorOnDamageTaken = ConsoleColor.DarkGreen;
+            }
+
+
             //Chance of armor deflecting the attack 
             //If armor doesnt stop the attack.
             if (RandomChance.Success(100 - deffender.Armor))
@@ -20,6 +29,8 @@
                 {
                     deffender.Hp -= damageDealth;
                     //If defender is dead.
+                    
+                    Console.ForegroundColor = colorOnDamageDealth;
                     if (deffender.Hp > 0)
                     {
                         Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage, with {attacker.AttackNames[answer]}. {deffender.Name} now has {deffender.Hp}HP");
@@ -33,12 +44,14 @@
                 else
                 {
                     //Attack failed
+                    Console.ForegroundColor = colorOnDamageTaken;
                     Console.WriteLine("{1} couldn't perform {0}.", attacker.AttackNames[answer], attacker.Name);
                 }
             }
             else
             {
                 //armor blocked
+                Console.ForegroundColor = colorOnDamageTaken;
                 Console.WriteLine("{0}'s armor stopped {1} attack.", deffender.Name, attacker.Name);
             }
         }
