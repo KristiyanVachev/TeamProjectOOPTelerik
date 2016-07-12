@@ -9,6 +9,7 @@
     {
         public static void Attack(ICreature attacker, ICreature deffender, int answer)
         {
+            //coloring the type of damage dealed
             var colorOnDamageDealth = ConsoleColor.DarkGreen;
             var colorOnDamageTaken = ConsoleColor.Red;
             if (attacker is Monster)
@@ -33,11 +34,11 @@
                     Console.ForegroundColor = colorOnDamageDealth;
                     if (deffender.Hp > 0)
                     {
-                        Console.WriteLine($"{attacker.Name} dealth {damageDealth} damage, with {attacker.AttackNames[answer]}. {deffender.Name} now has {deffender.Hp}HP");
+                        Console.WriteLine($"{attacker.Name} dealt {damageDealth} damage, with {attacker.AttackNames[answer]}. {deffender.Name} now has {deffender.Hp}HP");
                     }
                     else
                     {
-                        Console.WriteLine("{1} dealth {0} damage.", damageDealth, attacker.Name);
+                        Console.WriteLine("{1} dealt {0} damage.", damageDealth, attacker.Name);
                     }
                 }
                 //No damage dealth.
