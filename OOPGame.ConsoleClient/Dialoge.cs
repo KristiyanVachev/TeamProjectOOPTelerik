@@ -47,7 +47,7 @@ namespace OOPGame.ConsoleClient
         public static void HeroDiedFleeing()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("You have died while fleeing. Shame!");
+            Console.WriteLine("Death by fleeing... Shame!");
         }
 
         public static void NewSword(ISword sword)
